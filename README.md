@@ -1,6 +1,5 @@
 # rrr
-RapidRubyRecorder
-Ruby Codeeditor / light IDE
+RapidRubyRecorder => Ruby Codeeditor / light IDE
 
 ![alt text](https://github.com/morten1982/rrr/blob/master/icons/rrr_run.png)
 
