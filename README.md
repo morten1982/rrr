@@ -24,7 +24,7 @@ fxruby
 # Install
 RapidRubyRecorder is using FXRuby (-> FoxGUI)
 
-1.) sudo apt get install libfox-1.6-dev (on ubuntu)
+- 1.) sudo apt-get install libfox-1.6-dev (on ubuntu)
 
 2.) gem install fxruby
 
