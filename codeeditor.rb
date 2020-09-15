@@ -118,8 +118,8 @@ class Codeeditor < FXText
     word = @rrr.codecompletion.text
     @written_word << event.text
     #p @written_word
-    p event.code
-    p event.state
+    puts "code: " + event.code.to_s
+    puts "state: " + event.state.to_s
     if event.code == KEY_Tab && word == ""
       reset_written_word
       @rrr.reset_completion
@@ -185,7 +185,13 @@ class Codeeditor < FXText
     elsif (event.code == 228) || (event.code == 246) || (event.code == 252)
       return
     elsif event.state == 17 && ((event.code == 214) || (event.code == 196) || (event.code == 220))
-      # shift key 
+      # shift key + umlaut
+      return
+    elsif event.state == 144 && ((event.code == 178) || (event.code == 179))
+      # alt gr + 2 || 3
+      return
+    elsif event.state == 17 && event.code == 167
+      # shift + 3
       return
     elsif (event.code == 223) || (event.code == 176)
       return
