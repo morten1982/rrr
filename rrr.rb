@@ -384,7 +384,8 @@ class RRR < FXMainWindow
     ini.parse
     system = ini.get_system
     run, terminal, interpreter = ini.get_content(system)
-    %x(#{interpreter})
+    thr = Thread.new { %x(#{interpreter}) }
+    #%x(#{interpreter})
   end
   
   def search
@@ -415,7 +416,8 @@ class RRR < FXMainWindow
     ini.parse
     system = ini.get_system
     run, terminal, interpreter = ini.get_content(system)
-    %x(#{terminal})
+    thr = Thread.new { %x(#{terminal}) }
+    #%x(#{terminal})
   end
   
   def run
@@ -445,7 +447,8 @@ class RRR < FXMainWindow
       end
     # run all non-html
     else
-      %x(#{run})
+      thr = Thread.new { %x(#{run}) }
+      #%x(#{run})
     end
   end
   
