@@ -119,6 +119,7 @@ class Codeeditor < FXText
     @written_word << event.text
     #p @written_word
     p event.code
+    p event.state
     if event.code == KEY_Tab && word == ""
       reset_written_word
       @rrr.reset_completion
@@ -173,7 +174,7 @@ class Codeeditor < FXText
       whitespaces = text.size - text.lstrip.size
       # 2 => tabsize
       if whitespaces.even? && whitespaces >= 2
-        if cursor_left2_string == "  " 
+        if cursor_left2_string == "  "
           self.removeText(pos-2, 2)
         else
           false
@@ -182,6 +183,9 @@ class Codeeditor < FXText
         false
       end
     elsif (event.code == 228) || (event.code == 246) || (event.code == 252)
+      return
+    elsif event.state == 17 && ((event.code == 214) || (event.code == 196) || (event.code == 220))
+      # shift key 
       return
     elsif (event.code == 223) || (event.code == 176)
       return
