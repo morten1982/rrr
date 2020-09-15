@@ -500,6 +500,13 @@ class Codeeditor < FXText
     self.text = ""
   end
   
+  def comment_line(line_start, line_end)
+    puts "here"
+    if line_end == self.cursorPos then return end 
+    words = extractText(line_start, line_end)
+    puts words
+  end
+  
   def on_text_inserted(sender, sel, change)
     @undolist.add(FXTextInsert.new(self, change.pos))
     @undolist.trimSize(KEEPUNDOSIZE) if (@undolist.undoSize() > MAXUNDOSIZE)

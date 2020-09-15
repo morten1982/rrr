@@ -27,6 +27,15 @@ class RRR < FXMainWindow
 
   def init_ui
     ##
+    # Icon
+    ##
+    @bigicon = load_icon("rrr.png")
+    @smallicon = load_icon("rrr.png")
+    # Application icons
+    setIcon(@bigicon)
+    setMiniIcon(@smallicon)
+    
+    ##
     # Tool bar
     ##
     toolbar = FXToolBar.new(self,
