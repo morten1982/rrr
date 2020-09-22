@@ -26,11 +26,11 @@ RapidRubyRecorder is using FXRuby (-> FoxGUI)
 
 - 1.) sudo apt-get install libfox-1.6-dev (on ubuntu)
 
-2.) gem install fxruby
+- 2.) gem install fxruby
 
 or
 
-bundle install (via Gemfile)
+      bundle install (via Gemfile)
  
 # Run
 'ruby rrr.rb'
