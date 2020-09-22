@@ -32,7 +32,7 @@ RapidRubyRecorder is using FXRuby (-> FoxGUI)
 
 or
 
-    bundle install (via Gemfile)
+      bundle install (via Gemfile)
  
 # Run
 'ruby rrr.rb'
