@@ -42,6 +42,6 @@ MIT -> feel free to fork it => make it better if you want to do this :)
 
 # to DO
 -> improve the comments highlighting /syntax highlighting in general
--> imporve backtab 
+-> improve backtab
 -> make automatic an "end" when using loop, if, etc...
 -> visualize brace matching
