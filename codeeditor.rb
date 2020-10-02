@@ -118,8 +118,8 @@ class Codeeditor < FXText
     word = @rrr.codecompletion.text
     @written_word << event.text
     #p @written_word
-    puts "code: " + event.code.to_s
-    puts "state: " + event.state.to_s
+    #puts "code: " + event.code.to_s
+    #puts "state: " + event.state.to_s
     if event.code == KEY_Tab && word == ""
       reset_written_word
       @rrr.reset_completion
@@ -232,6 +232,8 @@ class Codeeditor < FXText
       reset_written_word
       @rrr.codeview.init_tree
       
+      making_end(text_prev.chop!)
+      
     elsif (keycode == KEY_space || keycode == KEY_Up || keycode == KEY_Down ||
                       keycode == KEY_Left || keycode == KEY_Right)
       @rrr.reset_completion
@@ -264,6 +266,34 @@ class Codeeditor < FXText
       highlight_line(line_start, line_end)
       @rrr.reset_completion
       return
+    end
+  end
+  
+  def making_end(text)
+    words = text.split 
+    signal = %w(while for do until class def if begin unless case)
+    words.each do |word|
+      if signal.include? word
+        whitespaces = text.size - text.lstrip.size
+        pos = self.cursorPos
+        
+        start_next_line = self.nextLine(pos)
+        end_next_line = self.lineEnd(start_next_line)
+        l = end_next_line - start_next_line
+        check_text = self.extractText(start_next_line, l) 
+        w_check_text = check_text.size - check_text.lstrip.size
+        return if check_text.include?("end") && w_check_text == whitespaces
+    
+        self.insertText(pos, "\n")
+        to_insert = " " * whitespaces + "end\n"
+        self.insertText(start_next_line, to_insert)
+        
+        line_start = lineStart(start_next_line)
+        line_end = lineEnd(start_next_line)
+        highlight_line(line_start, line_end)
+        
+        self.setCursorPos(pos)
+      end
     end
   end
   
