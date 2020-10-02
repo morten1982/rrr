@@ -276,7 +276,11 @@ class Codeeditor < FXText
       if signal.include? word
         whitespaces = text.size - text.lstrip.size
         pos = self.cursorPos
-        
+        s = self.lineStart(pos)
+        e = self.lineEnd(pos)
+        l = e - s
+        is_text = self.extractText(s, l)
+        return if is_text.strip != ""
         start_next_line = self.nextLine(pos)
         end_next_line = self.lineEnd(start_next_line)
         l = end_next_line - start_next_line
