@@ -190,6 +190,9 @@ class Codeeditor < FXText
     elsif event.state == 144 && ((event.code == 178) || (event.code == 179))
       # alt gr + 2 || 3
       return
+    elsif event.state == 144 && ((event.code == 189) || (event.code == 172) || (event.code == 188))
+      # alt gr + 5 || 6 || 4
+      return
     elsif event.state == 17 && event.code == 167
       # shift + 3
       return
