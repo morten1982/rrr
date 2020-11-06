@@ -17,7 +17,9 @@ require 'fox16/undolist'
 class RRR < FXMainWindow
   attr_accessor :editor,
                 :codecompletion,
-                :codeview
+                :codeview,
+                :tab_list,
+                :tabbook
   
   def initialize(app)
     super(app, "Rapid Ruby Recorder", :width => 1200, :height => 800)
@@ -228,13 +230,17 @@ class RRR < FXMainWindow
   end
 
   def new
-    #cmd = "ruby " + __FILE__.to_s
-    #t1 = Thread.new{`#{cmd}`}
     tab = TabItem.new(@tabbook, "noname")
     tab.connect(SEL_RIGHTBUTTONPRESS) do |sender, sel, event|
       @tabbook.setCurrent(@tab_list.size-1) # last item in list
       tab_contextmenu(sender, sel, event)
     end
+    #tab.connect(SEL_KEYPRESS) do |sender, sel, event|
+    #  if event.state == 24 && event.code == 65364
+    #    # alt + down
+    #    @editor.setFocus
+    #  end
+    #end
     FXHorizontalFrame.new(@tabbook) do |hf|
       hf.setBackColor('#0b0b0b')
       editor = Codeeditor.new(hf, filename="noname",tab=tab, filebrowser=@filebrowser,

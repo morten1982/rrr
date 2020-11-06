@@ -39,6 +39,7 @@ class NoteBook < FXTabBook
   def setup_item
     setBackColor('#0b0b0b')
     setTextColor('white')
+    
   end
   
   def remove_last_tab
@@ -47,6 +48,13 @@ class NoteBook < FXTabBook
     self.removeChild(self.childAtIndex(2*doomedTab+1))
     self.removeChild(self.childAtIndex(2*doomedTab))
   end
+  
+  def get_current_tab
+    numTabs = self.numChildren/2
+    doomedTab = numTabs - 1
+    self.childAtIndex(2*doomedTab)
+  end
+  
 end
 
 ##

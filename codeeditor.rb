@@ -184,6 +184,17 @@ class Codeeditor < FXText
       end
     elsif (event.code == 228) || (event.code == 246) || (event.code == 252)
       return
+    elsif event.state == 24 && event.code == 65362
+      # alt + up
+      last = @rrr.tab_list.size                       
+      @rrr.tabbook.setCurrent(last-1)
+      @rrr.tab_book_changed
+      x = @rrr.tabbook.get_current_tab
+      x.setFocus
+      return
+    elsif event.state == 24 && event.code == 65364
+      # alt + down
+      return
     elsif event.state == 17 && ((event.code == 214) || (event.code == 196) || (event.code == 220))
       # shift key + umlaut
       return
