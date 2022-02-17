@@ -24,6 +24,7 @@ class RRR < FXMainWindow
   def initialize(app)
     super(app, "Rapid Ruby Recorder", :width => 1200, :height => 800)
     @tab_list = []
+    setBackColor('#000000')
     init_ui
   end
 
@@ -571,7 +572,7 @@ end
 
 if __FILE__ == $0
   FXApp.new do |app|
-    app.setForeColor('white')
+    app.setForeColor('black')
     app.setBaseColor('#6E6E6E')
     RRR.new(app)
     app.create
