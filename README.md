@@ -26,10 +26,10 @@ RapidRubyRecorder is using FXRuby (-> FoxGUI)
 
 - 1.) sudo apt-get install libfox-1.6-dev \
                            libxrandr-dev \
-                           pkg-config
-      or
-      sudo pacman -S fox
-      sudo pacman -S libxrandr
+                           pkg-config \
+      or \
+      sudo pacman -S fox \
+      sudo pacman -S libxrandr \
  
 - 2.) 
 
